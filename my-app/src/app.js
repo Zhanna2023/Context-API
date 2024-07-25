@@ -22,6 +22,19 @@ const getAnoterUserFromServer = () => ({
 export const App = () => {
 	const [userData, setUserData] = useState({});
 
+	const dispatch = (action) => {
+		const { type, payload } = action;
+
+		switch (type) {
+			case 'SET USER DATA': {
+				setUserData(payload);
+				break;
+			}
+			default:
+			// ничего не делать
+		}
+	};
+
 	useEffect(() => {
 		const userDataFromServer = getUserFromServer();
 		setUserData(userDataFromServer);
@@ -33,7 +46,7 @@ export const App = () => {
 	};
 
 	return (
-		<AppContext.Provider value={userData}>
+		<AppContext.Provider value={{ userData, dispatch }}>
 			<div className={styles.app}>
 				<Header />
 				<hr />
