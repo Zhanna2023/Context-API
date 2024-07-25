@@ -8,14 +8,20 @@ export const UserPersonalInfo = () => {
 	const onUserUpdate = () => {
 		const newUserData = { name, age: 30, email, phone };
 		/* setUserData (newUserData)*/
-		dispatch({ type: 'SET USER DATA', payload: newUserData });
+		dispatch({ type: 'SET_USER_DATA', payload: newUserData });
 	};
+
+	const onUserAgeDecrease = () => {
+		dispatch({ type: 'SET_USER_AGE', payload: 15 });
+	};
+
 	return (
 		<div>
 			<h3>Персональные данные</h3>
 			<div> Имя: {name}</div>
 			<div> Возраст: {age} </div>
 			<button onClick={onUserUpdate}>Обновить пользователя</button>
+			<button onClick={onUserAgeDecrease}>Уменьшить возраст пользователя</button>
 		</div>
 	);
 };

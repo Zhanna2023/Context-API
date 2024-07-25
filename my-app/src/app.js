@@ -26,8 +26,15 @@ export const App = () => {
 		const { type, payload } = action;
 
 		switch (type) {
-			case 'SET USER DATA': {
+			case 'SET_USER_DATA': {
 				setUserData(payload);
+				break;
+			}
+			case 'SET_USER_AGE ': {
+				setUserData({
+					...userData,
+					age: payload,
+				});
 				break;
 			}
 			default:
